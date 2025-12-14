@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% load socialaccount %}
+{% block content %}
+<div class="container" style="max-width:480px">
+  <h3 class="mb-3">Sign in to complete order</h3>
+  <a class="btn btn-outline-danger w-100 mb-2" href="{% provider_login_url 'google' %}">
+    Continue with Google
+  </a>
+  {% comment %} <a class="btn btn-outline-primary w-100 mb-2" href="{% provider_login_url 'facebook' %}">
+    Continue with Facebook
+  </a> {% endcomment %}
+  <hr/>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-dark w-100" type="submit">Sign in with Email</button>
+    <h1>checkout login page</h1>
+  </form>
+</div>
+{% endblock %}

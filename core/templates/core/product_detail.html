@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{ product.thumbnail.url }}" class="img-fluid rounded" alt="{{ product.name }}">
+    </div>
+    <div class="col-md-6">
+      <h3>{{ product.name }}</h3>
+      <p class="lead">${{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <button class="btn btn-warning add-to-cart" data-id="{{ product.id }}">Add to cart</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

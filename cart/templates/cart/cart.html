@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <h3 class="mb-3">Your cart</h3>
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th>Product</th><th>Thumbnail</th><th>Price</th><th>Qty</th><th>Subtotal</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="cartBody">
+      {% for item in cart %}
+        <tr data-id="{{ item.id }}">
+          <td>{{ item.name }}</td>
+          <td><img src="{{ item.thumbnail }}" class="img-thumbnail" style="width:64px;height:64px;"></td>
+          <td>${{ item.price }}</td>
+          <td>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-sm btn-outline-secondary qty-minus">-</button>
+              <input type="number" class="form-control form-control-sm mx-2 qty-input" value="{{ item.qty }}" min="1" style="width:70px;">
+              <button class="btn btn-sm btn-outline-secondary qty-plus">+</button>
+            </div>
+          </td>
+          <td class="subtotal">${{ item.subtotal }}</td>
+          <td><button class="btn btn-sm btn-outline-danger remove-item">Delete</button></td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="6">Your cart is empty.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <a href="{% url 'core:home' %}" class="btn btn-outline-dark">Continue shopping</a>
+    <div>
+      <strong>Total: $<span id="cartTotal">{{ total }}</span></strong>
+      {% comment %} <a href="{% url 'orders:checkout' %}" class="btn btn-warning ms-3">Checkout</a> {% endcomment %}
+      <a href="{% url 'orders:checkout' %}" class="btn btn-warning">Proceed to Checkout</a>
+    </div>
+  </div>
+</div>
+<script src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock %}

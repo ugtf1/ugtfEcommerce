@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+<div class="container text-center py-5">
+  <div class="mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor" class="bi bi-check-circle text-success" viewBox="0 0 16 16">
+      <path d="M15.854 4.146a.5.5 0 0 1 0 .708l-8.5 8.5a.5.5 0 0 1-.708 0l-4.5-4.5a.5.5 0 0 1 .708-.708L7 12.293l8.146-8.147a.5.5 0 0 1 .708 0z"/>
+      <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+    </svg>
+  </div>
+
+  <h2 class="fw-bold">Payment Successful!</h2>
+  <p class="lead">Thank you for your purchase. Your order has been placed successfully.</p>
+
+  {% if order %}
+    <div class="card shadow-sm my-4 mx-auto" style="max-width:600px;">
+      <div class="card-body">
+        <h5 class="card-title">Order #{{ order.id }}</h5>
+        <p><strong>Total:</strong> ${{ order.total }}</p>
+        <p><strong>Status:</strong> {{ order.status|capfirst }}</p>
+        <hr/>
+        <h6>Items:</h6>
+        <ul class="list-group list-group-flush">
+          {% for item in order.items.all %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <img src="{{ item.thumbnail }}" alt="{{ item.product_name }}" class="img-thumbnail me-2" style="width:50px;height:50px;">
+                {{ item.product_name }} (x{{ item.quantity }})
+              </div>
+              <span>${{ item.subtotal }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
+  <a href="{% url 'core:home' %}" class="btn btn-outline-dark me-2">Continue Shopping</a>
+  <a href="{% url 'orders:checkout' %}" class="btn btn-warning">View Orders</a>
+</div>
+
+{% endblock %}

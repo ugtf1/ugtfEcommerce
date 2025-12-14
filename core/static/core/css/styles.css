@@ -1,0 +1,7 @@
+body { background-color: #f8f9fa; }
+.card { border: none; box-shadow: 0 0.35rem 1rem rgba(0,0,0,0.08); }
+.navbar-brand { letter-spacing: 0.5px; }
+.carousel-caption { background: rgba(36, 34, 34, 0.4); border-radius: .5rem; padding: .75rem 1rem; }
+.btn-warning { color: #1a1a1a; font-weight: 600; }
+footer { font-size: .95rem; }
+.hero { height: 400px; object-fit: cover; border: red 2px solid; }

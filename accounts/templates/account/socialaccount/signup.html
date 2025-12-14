@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="container py-5" style="max-width:480px;">
+  <h3 class="mb-4 text-center">Complete your sign up</h3>
+  <p class="text-muted text-center">We need a few more details to finish creating your account.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning w-100" type="submit">Finish sign up</button>
+  </form>
+</div>
+{% endblock %}
