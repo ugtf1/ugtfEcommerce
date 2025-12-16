@@ -21,7 +21,7 @@ ENV PYTHONUNBUFFERED=1
 
 
 # Collect static files
-RUN python manage.py collectstatic
+# RUN python manage.py collectstatic --noinput
 
 # Run gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8080", "ugtfstore.wsgi:application"]
