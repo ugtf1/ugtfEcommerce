@@ -6,7 +6,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret")
 DEBUG = os.getenv("DEBUG", "True") == "True"
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", os.getenv("HOST", "")]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", os.getenv("HOST", "https://ugtfstore-30228073381.us-east1.run.app")]
 
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
@@ -62,8 +62,8 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-LOGIN_URL = "http://localhost:8000/accounts/login/"
-LOGIN_REDIRECT_URL = "http://localhost:8000/checkout/"
+LOGIN_URL = "https://ugtfstore-30228073381.us-east1.run.app/accounts/login/"
+LOGIN_REDIRECT_URL = "https://ugtfstore-30228073381.us-east1.run.app/checkout/"
 
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
@@ -73,8 +73,8 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
-LOGIN_REDIRECT_URL = "http://localhost:8000/cart/"
-LOGOUT_REDIRECT_URL = "http://localhost:8000/"
+LOGIN_REDIRECT_URL = "https://ugtfstore-30228073381.us-east1.run.app/cart/"
+LOGOUT_REDIRECT_URL = "https://ugtfstore-30228073381.us-east1.run.app/"
 
 # Static & Media
 STATIC_URL = "/static/"
@@ -85,7 +85,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Security (production)
-CSRF_TRUSTED_ORIGINS = [os.getenv("CSRF_ORIGIN", "http://localhost:8000")]
+CSRF_TRUSTED_ORIGINS = [os.getenv("CSRF_ORIGIN", "https://ugtfstore-30228073381.us-east1.run.app")]
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 7 days
 
