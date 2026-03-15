@@ -3,12 +3,13 @@
 {% block content %}
 
 <style>
-  /* Fullscreen hero */
+  /* Fullscreen hero carousel */
   #hero {
     height: 100vh;
+    margin-top: -5rem; /* pull up to cover navbar gap */
   }
   #hero .carousel-item {
-    height: 80vh;
+    height: 100vh; /* full height for each slide */
   }
   #hero .carousel-item img {
     object-fit: cover;
@@ -16,31 +17,37 @@
     height: 100%;
   }
   #hero .carousel-caption {
-    background: rgba(0,0,0,0.4);
-    padding: 4rem 4rem;
+    background: rgba(0,0,0,0.45); /* semi-transparent overlay */
+    padding: 2rem 3rem;
     border-radius: .5rem;
+  }
+  #hero h3, #hero p {
+    color: #fff;
   }
 </style>
 
-<!-- Fullscreen hero outside container -->
+<!-- Fullscreen Hero Carousel -->
 <div id="hero" class="carousel slide mb-4" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{% static 'core/img/hero1.jpg' %}" class="d-block w-100" alt="">
-      <div class="carousel-caption">
-        <h3>Discover premium picks</h3>
-        <p>Handpicked products for you</p>
-      </div>
+      <img src="{% static 'core/img/hero1.jpg' %}" class="d-block w-100" alt="Premium Picks">
+      {% comment %} <div class="carousel-caption">
+        <h3 class="fw-bold">Discover Premium Picks</h3>
+        <p>Handpicked products chosen with care</p>
+        <a href="{% url 'core:product_list' %}" class="btn btn-primary rounded-pill">Shop Now</a>
+      </div> {% endcomment %}
     </div>
     <div class="carousel-item">
-      <img src="{% static 'core/img/hero2.jpg' %}" class="d-block w-100" alt="">
-      <div class="carousel-caption">
-        <h3>Shop by category</h3>
+      <img src="{% static 'core/img/hero2.jpg' %}" class="d-block w-100" alt="Categories">
+      {% comment %} <div class="carousel-caption">
+        <h3 class="fw-bold">Shop by Category</h3>
         <p>Find exactly what you need</p>
-      </div>
+        <a href="{% url 'core:category_list' %}" class="btn btn-warning rounded-pill">Browse Categories</a>
+      </div> {% endcomment %}
     </div>
   </div>
-  <!-- Optional controls -->
+
+  <!-- Carousel Controls -->
   <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
@@ -48,6 +55,7 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+
 
 <!-- Rest of page content -->
 <div class="container mt-5">
